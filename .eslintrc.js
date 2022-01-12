@@ -13,8 +13,8 @@ module.exports = {
     'prettier'
   ],
   rules: {
-    'no-multiple-empty-lines': [ 2, { 'max': 1 } ],
-    'quotes': [ 2, 'single' ],
+    'no-multiple-empty-lines': [ 2, { max: 1 } ],
+    quotes: [ 2, 'single' ],
     '@typescript-eslint/no-explicit-any': [ 'off' ],
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
@@ -22,8 +22,8 @@ module.exports = {
     'no-useless-escape': 'off',
     'no-empty-pattern': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    'semi': [ 'error', 'always' ],
-    //'semi-spacing': [ 'error', { 'after': true, 'before': false } ],
+    semi: [ 'error', 'always' ],
+    //'semi-spacing': ['error', { after: true, before: false }],
     //'semi-style': [ 'error', 'first' ],
     'no-extra-semi': 'error',
     'no-unexpected-multiline': 'error',
