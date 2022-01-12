@@ -1,6 +1,5 @@
 // LINEアカウントのアクセストークン
-const LINE_TOKEN =
-  "w4SM3TYXx3psc3Rgx3dxGVEsvvC8L44+jzIaennY47VNjGalB7Uk2I3Xri/3UG60TL9VJT44nB59HjFgf356yR8EhCA94CjHeaoJLiJWYb/xhGNqp1qAMxmGfk720fVeUWqqD8kqOJhTiHwM4/BpCgdB04t89/1O/w1cDnyilFU=";
+const LINE_TOKEN = PropertiesService.getScriptProperties().getProperty("LINE_TOKEN");
 // GssId
 const GSS_ID = "1e-D9MUtC-Cc0NiplVLheY11L67vgaLg5l3MjsFkamZQ";
 
