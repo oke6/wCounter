@@ -28,4 +28,4 @@ jobs:
     - name: Deploy
       run: |
         clasp push -f
-        clasp deploy -d "auto deployment" -i AKfycbx_7w6vgKf5APRD4N9bi4J-SqCRzsL08z8XlD8k4ZL4JBxJ9eJE492xY7OsNnWbVIRR
+        clasp deploy -d "auto deployment" -i ${{ secrets.DEPLOYMENT_ID}}
