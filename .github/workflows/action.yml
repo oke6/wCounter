@@ -28,4 +28,4 @@ jobs:
     - name: Deploy
       run: |
         clasp push -f
-        clasp deploy -d "auto deployment" -i AKfycbxKXKHbGkg8ooneMxa_WKqreN0lxUXLofqRxawaFGg9-uSy8UDJ6Y2yYorxRoIcWAb-
+        clasp deploy -d "auto deployment" -i AKfycbxJWnsfv2jwFTHN7an_Yc0rA7dTUewt8z1Q7lSoiPihYtg8CVLgRaNpuZC9r-CYGVGz
