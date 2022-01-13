@@ -1,7 +1,6 @@
-// LINEアカウントのアクセストークン
-const LINE_TOKEN = PropertiesService.getScriptProperties().getProperty("LINE_TOKEN");
-// GssId
-const GSS_ID = "1e-D9MUtC-Cc0NiplVLheY11L67vgaLg5l3MjsFkamZQ";
+const LINE_TOKEN = PropertiesService.getScriptProperties().getProperty('LINE_TOKEN');
+const GSS_ID = PropertiesService.getScriptProperties().getProperty('GSS_ID');
+const GSS_SHEET_NAME = PropertiesService.getScriptProperties().getProperty('GSS_SHEET_NAME');
 
 type PostEvent = {
   queryString: string;
@@ -17,47 +16,47 @@ type PostEvent = {
 };
 
 const doPost = (e: PostEvent) => {
-  //投稿情報を取得
   const payload = JSON.parse(e.postData.contents).events[0];
   const replyToken = payload.replyToken;
   const messageText = payload.message.text;
   const userId = payload.source.userId;
 
-  //ログ取得用
-  const sheet = SpreadsheetApp.openById(GSS_ID).getSheetByName("log");
-  if (sheet) {
-    sheet.appendRow([messageText, userId]);
+  if (GSS_ID && GSS_SHEET_NAME) {
+    const sheet = SpreadsheetApp.openById(GSS_ID).getSheetByName(GSS_SHEET_NAME);
+    if (sheet) {
+      sheet.appendRow([ messageText, userId ]);
+      //sheet.appendRow([ JSON.stringify(payload, undefined, 4) ]);
+    }
   }
 
   const count = getWCount(messageText);
-
   if (count) {
-    const replyText = "草の数: " + count;
+    const replyText = '草の数: ' + count;
     replyMessage(replyToken, replyText);
   }
 };
 
 function replyMessage(replyToken: string, replyText: string): void {
-  UrlFetchApp.fetch("https://api.line.me/v2/bot/message/reply", {
+  UrlFetchApp.fetch('https://api.line.me/v2/bot/message/reply', {
     headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + LINE_TOKEN,
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + LINE_TOKEN
     },
-    method: "post",
+    method: 'post',
     payload: JSON.stringify({
       replyToken: replyToken,
       messages: [
         {
-          type: "text",
-          text: replyText,
-        },
-      ],
-    }),
+          type: 'text',
+          text: replyText
+        }
+      ]
+    })
   });
 }
 
 const getWCount = (text: string) => {
-  const replacedText = text.replace(/ｗ|W|Ｗ/g, "w");
+  const replacedText = text.replace(/ｗ|W|Ｗ/g, 'w');
   const count = (replacedText.match(/w/g) || []).length;
   return count;
 };
