@@ -25,7 +25,7 @@ const doPost = (e: PostEvent) => {
     try {
       const sheet = SpreadsheetApp.openById(GSS_ID).getSheetByName(GSS_SHEET_NAME);
       if (sheet) {
-        sheet?.appendRow([ messageText, userId ]);
+        sheet.appendRow([ messageText, userId ]);
         //sheet.appendRow([ JSON.stringify(payload, undefined, 4) ]);
       }
     } catch(error) {
@@ -61,6 +61,5 @@ function replyMessage(replyToken: string, replyText: string): void {
 
 const getWCount = (text: string) => {
   const replacedText = text.replace(/ｗ|W|Ｗ/g, 'w');
-  const count = (replacedText.match(/w/g) || []).length;
-  return count;
+  return (replacedText.match(/w/g) || []).length;
 };
