@@ -22,10 +22,14 @@ const doPost = (e: PostEvent) => {
   const userId = payload.source.userId;
 
   if (GSS_ID && GSS_SHEET_NAME) {
-    const sheet = SpreadsheetApp.openById(GSS_ID).getSheetByName(GSS_SHEET_NAME);
-    if (sheet) {
-      sheet.appendRow([ messageText, userId ]);
-      //sheet.appendRow([ JSON.stringify(payload, undefined, 4) ]);
+    try {
+      const sheet = SpreadsheetApp.openById(GSS_ID).getSheetByName(GSS_SHEET_NAME);
+      if (sheet) {
+        sheet?.appendRow([ messageText, userId ]);
+        //sheet.appendRow([ JSON.stringify(payload, undefined, 4) ]);
+      }
+    } catch(error) {
+      console.log('GSS properties are invalid');
     }
   }
 
