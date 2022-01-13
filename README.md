@@ -4,18 +4,18 @@
 
 ### 構成概要 ###
 
-・本ソースをGASにwebアプリとしてデプロイ
-・LINE Developerにて作成したbotアカウントのwebhook URLにデプロイしたURLを指定
-・リクエストを受け取ると「w」をカウントして、その結果を返信
+ - 本ソースをGASにwebアプリとしてデプロイ
+ - LINE Developerにて作成したbotアカウントのwebhook URLにデプロイしたURLを指定
+ - リクエストを受け取ると「w」をカウントして、その結果を返信
 
 ### Github Actionsによるデプロイ ###
 
-・mainブランチにpushされた場合、Github ActionsによりGASスクリプトのデプロイを行います。
-・ログイン情報はRepository Secretsに設定している内容をもとに定義しています
-・デプロイのたびにURLが変わらないよう、デプロイIDを指定しています。
-※詳細は「action.yml」を確認
-※claspの仕様については割愛
-
+ - mainブランチにpushされた場合、Github ActionsによりGASスクリプトのデプロイを行います。
+ - ログイン情報はRepository Secretsに設定している内容をもとに定義しています
+ - デプロイのたびにURLが変わらないよう、デプロイIDを指定しています。  
+※詳細は「action.yml」を確認  
+※claspの仕様については割愛  
+  
 ### Repository Secretsに定義する変数 ###
 ログイン情報などは直接記載せずにSECRETSから取得する
   
@@ -27,7 +27,8 @@
 | ID_TOKEN      |  〃 | 
 | REFRESH_TOKEN |  〃 | 
 | DEPLOYMENT_ID |   GASスクリプトのデプロイID   | 
-
+  
+  
 ### GASのScript Propertyに定義する変数 ###
 | SECRETS変数   | 説明 | 
 | :------------- | :----: | 
@@ -35,4 +36,4 @@
 | GSS_ID     | ログ出しする場合のGSSのID<br>GSSのURLから取得できる | 
 | GSS_SHEET_NAME | ログ出しする場合のGSSのシート名称 | 
 
-※GSSの指定はオプション、指定のない場合はログ出力処理は行われない
+※GSS_ID、GSS_SHEET_NAMEはオプション、指定のない場合はログ出力処理は行われない
