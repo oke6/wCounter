@@ -15,7 +15,7 @@ type PostEvent = {
   };
 };
 
-const doPost = (e: PostEvent) => {
+const doPost = (e: PostEvent): void => {
   const payload = JSON.parse(e.postData.contents).events[0];
   const replyToken = payload.replyToken;
   const messageText = payload.message.text;
@@ -26,7 +26,6 @@ const doPost = (e: PostEvent) => {
       const sheet = SpreadsheetApp.openById(GSS_ID).getSheetByName(GSS_SHEET_NAME);
       if (sheet) {
         sheet.appendRow([ messageText, userId ]);
-        //sheet.appendRow([ JSON.stringify(payload, undefined, 4) ]);
       }
     } catch(error) {
       console.log('GSS properties are invalid');
@@ -59,7 +58,7 @@ function replyMessage(replyToken: string, replyText: string): void {
   });
 }
 
-const getWCount = (text: string) => {
+const getWCount = (text: string): number => {
   const replacedText = text.replace(/ｗ|W|Ｗ/g, 'w');
   return (replacedText.match(/w/g) || []).length;
 };

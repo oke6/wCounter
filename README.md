@@ -10,7 +10,7 @@
 
 ### Github Actionsによるデプロイ ###
 
- - mainブランチにpushされた場合、Github ActionsによりGASスクリプトのデプロイを行います。
+ - mainブランチにpushされた場合、Github ActionsによりGASスクリプトの自動デプロイを行います。
  - ログイン情報はRepository Secretsに設定している内容をもとに定義しています。
  - デプロイのたびにURLが変わらないよう、デプロイIDを指定しています。  
 ※詳細は「action.yml」を確認  
